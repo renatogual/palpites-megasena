@@ -1,0 +1,9 @@
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#sortear,
+#adicionar {
+    width: 100%;
+}
