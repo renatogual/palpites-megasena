@@ -1,5 +1,7 @@
 const inputNome = document.querySelector('#name')
 const inputNumero = document.querySelector('#number')
+const inputNomeEdit = document.querySelector('#nameEdit')
+const inputNumeroEdit = document.querySelector('#numberEdit')
 const buttonAdicionar = document.querySelector('#adicionar')
 const tbody = document.querySelector('tbody')
 const inputQtde = document.querySelector('#qtde')
@@ -24,7 +26,9 @@ function renderizarHtml() {
         let deleteIcon = document.createElement('i')
         deleteIcon.classList.add('material-icons')
         deleteIcon.innerText = 'delete'
+
         let posicao = listaPalpites.indexOf(obj)
+        editIcon.setAttribute('onclick', `editarPalpite(${posicao})`)
         deleteIcon.setAttribute('onclick', `deletarPalpite(${posicao})`)
 
         let tdAcoes = document.createElement('td')
@@ -37,10 +41,8 @@ function renderizarHtml() {
         tr.appendChild(tdAcoes)
 
         tbody.appendChild(tr)
-
     })
 }
-
 
 function adicionarPalpite() {
     let nome = inputNome.value
@@ -53,7 +55,25 @@ function adicionarPalpite() {
 }
 
 function editarPalpite(posicao) {
-    console.log(posicao);
+    inputNomeEdit.value = listaPalpites[posicao].nome
+    inputNumeroEdit.value = listaPalpites[posicao].palpite
+    const instance = M.Modal.getInstance(document.querySelector('#modalPalpites'));
+    instance.open()
+    let buttonEdit = document.querySelector('#buttonEditModal')
+    buttonEdit.onclick = () => {
+        if(inputNomeEdit.value != listaPalpites[posicao].nome) {
+            listaPalpites[posicao].nome = inputNomeEdit.value
+            instance.close()
+            renderizarHtml()
+            saveToStorage()
+        }
+        if(inputNumeroEdit.value != listaPalpites[posicao].palpite) {
+            listaPalpites[posicao].palpite = inputNumeroEdit.value
+            instance.close()
+            renderizarHtml()
+            saveToStorage()
+        }
+    }
 }
 
 function deletarPalpite(posicao) {

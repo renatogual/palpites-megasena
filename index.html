@@ -56,18 +56,36 @@
                 </div>
                 <div class="row center-align">
                     <div class="col s12">
-                        <a href="#modal" class="waves-effect waves-light btn green darken-3 hoverable modal-trigger" id="sortear">Sortear</a>
+                        <a href="#modalResult" class="waves-effect waves-light btn green darken-3 hoverable modal-trigger" id="sortear">Sortear</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Structure -->
-    <div id="modal" class="modal">
+    <!-- Modal Editar Palpites -->
+    <div id="modalPalpites" class="modal">
+        <div class="modal-content">
+            <div class="row valign-wrapper">
+                <div class="input-field col s6">
+                    <input id="nameEdit" type="text" class="validate">
+                </div>
+                <div class="input-field col s3">
+                    <input id="numberEdit" type="text" class="validate">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" id="buttonEditModal" class="waves-effect waves-green btn-flat">Editar</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        </div>
+    </div>
+
+    <!-- Modal Números Sorteados -->
+    <div id="modalResult" class="modal">
         <div class="modal-content">
             <h3>Números sorteados</h3>
-            <h4 id="result">10 15 20 30 45 60</h4>
+            <h4 id="result"></h4>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
