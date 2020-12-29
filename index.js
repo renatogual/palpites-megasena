@@ -57,8 +57,10 @@ function adicionarPalpite() {
 function editarPalpite(posicao) {
     inputNomeEdit.value = listaPalpites[posicao].nome
     inputNumeroEdit.value = listaPalpites[posicao].palpite
+
     const instance = M.Modal.getInstance(document.querySelector('#modalPalpites'));
     instance.open()
+
     let buttonEdit = document.querySelector('#buttonEditModal')
     buttonEdit.onclick = () => {
         if(inputNomeEdit.value != listaPalpites[posicao].nome) {
@@ -86,9 +88,42 @@ function saveToStorage() {
     localStorage.setItem('lista-palpites', JSON.stringify(listaPalpites))
 }
 
+function gerarNumeroAleatorio(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function gerarListaAleatorios() {
+    let listaAleatorios = []
+    let qtdeNumeros = inputQtde.value
+
+    for(let i=0; i < qtdeNumeros; i++) {
+        let numGerado = gerarNumeroAleatorio(0, listaPalpites.length)
+        while(listaAleatorios.includes(numGerado)) {
+            numGerado = gerarNumeroAleatorio(0, listaPalpites.length)
+        }
+        listaAleatorios.push(numGerado)
+    }
+
+    return listaAleatorios
+}
+
+function sortearNumeros() {
+    let numsGeradosAleatoriamente = gerarListaAleatorios()
+    let listaSorteados = []
+
+    numsGeradosAleatoriamente.map(numero => {
+        listaSorteados.push(listaPalpites[numero].palpite)
+    })
+
+    document.querySelector('#result').innerHTML = listaSorteados.join(' ')
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     M.AutoInit()
     renderizarHtml()
     buttonAdicionar.onclick = adicionarPalpite
+    buttonSortear.onclick = sortearNumeros
 });
 
