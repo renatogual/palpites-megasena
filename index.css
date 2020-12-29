@@ -1,10 +1,22 @@
+body {
+    background: url('./trevo.jpeg') center top fixed;
+}
+
 .container {
     margin-top: 20px;
     margin-bottom: 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
-#sortear,
-#adicionar {
+.center-special {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sortear {
     width: 100%;
 }
 

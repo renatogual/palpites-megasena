@@ -6,59 +6,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
     <link rel="stylesheet" href="index.css">
-    <title>Sorteio Palpites MegaSena</title>
+    <title>Sorteio de Palpites MegaSena</title>
 </head>
 <body>
     <div class="container z-depth-5">
         <div class="row">
             <div class="col s12">
-                <h3 class="center-align">Sorteio Palpites MegaSena</h3>
+                <h3 class="center-align">Sorteio de Palpites MegaSena</h3>
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <div class="row valign-wrapper">
-                    <div class="input-field col s6">
-                        <label for="name">Nome</label>
-                        <input id="name" type="text" class="validate">
-                    </div>
-                    <div class="input-field col s3">
-                        <label for="number">Número</label>
-                        <input id="number" type="text" class="validate">
-                    </div>
-                    <div class="col s3">
-                        <a class="waves-effect waves-light btn green darken-3 hoverable" id="adicionar">Adicionar</a>
-                    </div>
+            <div class="col s12 valign-wrapper">
+                <div class="input-field col s6 l9">
+                    <label for="name">Nome</label>
+                    <input id="name" type="text" class="validate">
                 </div>
-                <div class="row">
-                    <div class="col s12">
-                        <h4 class="center-align">Lista dos palpites</h4>
-                        <table class="highlight centered">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Palpite</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                <div class="input-field col s3 l2">
+                    <label for="number">Número</label>
+                    <input id="number" type="text" class="validate">
                 </div>
-                <div class="row center-align valign-wrapper">
-                    <div class="col s12">
-                        Quantos números deseja sortear ?
-                        <div class="input-field inline">
-                            <input id="qtde" type="number" class="validate">
-                            <label for="qtde">Quantidade</label>
-                        </div>
-                    </div>
+                <div class="col s3 l1">
+                    <a class="waves-effect waves-light btn green darken-3 hoverable" id="adicionar">
+                        <i class="material-icons">add</i>
+                    </a>
                 </div>
-                <div class="row center-align">
-                    <div class="col s12">
-                        <a href="#modalResult" class="waves-effect waves-light btn green darken-3 hoverable modal-trigger" id="sortear">Sortear</a>
-                    </div>
+            </div>
+            <div class="col s12 center-special">
+                <h4>Lista dos números</h4>
+                <table class="highlight centered">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Palpite</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="col s12 center">
+                <div class="input-field inline">
+                    <input id="qtde" type="number" class="validate">
+                    <label for="qtde">Quantos números deseja sortear ?</label>
                 </div>
+            </div>
+            <div class="col s12 center-special">
+                <a class="waves-effect waves-light btn green darken-3 hoverable modal-trigger" id="sortear">Sortear</a>
             </div>
         </div>
     </div>
