@@ -47,18 +47,22 @@ function renderizarHtml() {
 function adicionarPalpite() {
     let nome = inputNome.value
     let palpite = inputNumero.value
-    listaPalpites.push({nome, palpite})
-    inputNome.value = ''
-    inputNumero.value = ''
-    renderizarHtml()
-    saveToStorage()
+    if(nome > 0 || palpite > 0) {
+        listaPalpites.push({nome, palpite})
+        inputNome.value = ''
+        inputNumero.value = ''
+        renderizarHtml()
+        saveToStorage()
+    } else {
+        alert('Favor inserir nome e número')
+    }
 }
 
 function editarPalpite(posicao) {
     inputNomeEdit.value = listaPalpites[posicao].nome
     inputNumeroEdit.value = listaPalpites[posicao].palpite
 
-    const instance = M.Modal.getInstance(document.querySelector('#modalPalpites'));
+    let instance = M.Modal.getInstance(document.querySelector('#modalPalpites'));
     instance.open()
 
     let buttonEdit = document.querySelector('#buttonEditModal')
@@ -110,14 +114,23 @@ function gerarListaAleatorios() {
 }
 
 function sortearNumeros() {
-    let numsGeradosAleatoriamente = gerarListaAleatorios()
-    let listaSorteados = []
+    if(inputQtde.value > listaPalpites.length || inputQtde.value < 0) {
+        alert('Quantidade de números a sortear não permitidos')
+    } else if (inputQtde.value == 0) {
+        alert('Favor inserir quantos números deseja sortear')
+    } else {
+        let numsGeradosAleatoriamente = gerarListaAleatorios()
+        let listaSorteados = []
+    
+        numsGeradosAleatoriamente.map(numero => {
+            listaSorteados.push(listaPalpites[numero].palpite)
+        })
 
-    numsGeradosAleatoriamente.map(numero => {
-        listaSorteados.push(listaPalpites[numero].palpite)
-    })
-
-    document.querySelector('#result').innerHTML = listaSorteados.join(' ')
+        let instance = M.Modal.getInstance(document.querySelector('#modalResult'));
+        instance.open()
+    
+        document.querySelector('#result').innerHTML = listaSorteados.join(' ')
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
