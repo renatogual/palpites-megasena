@@ -1,68 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="index.css">
     <title>Sorteio de Palpites MegaSena</title>
 </head>
+
 <body>
     <div class="container z-depth-5">
         <div class="row">
             <div class="col s12">
                 <h3 class="center-align">Sorteio de Palpites MegaSena</h3>
-            </div>
-            <div class="col s12 valign-wrapper">
-                <div class="input-field col s6 l9">
-                    <label for="name">Nome</label>
-                    <input id="name" type="text" class="validate">
+                <form class="col s12">
+                    <div class="row valign-wrapper">
+                        <div class="input-field col s6 l9">
+                            <label for="name">Nome</label>
+                            <input id="name" type="text" class="validate" required pattern="[A-Za-zÀ-ú\s]+$" minlength="2" maxlength="30">
+                            <span class="helper-text" data-error="Nome inválido" data-success="Nome válido"></span>
+                        </div>
+                        <div class="input-field col s3 l2">
+                            <label for="number" data-error="Número inválido" data-success="Número válido">Número</label>
+                            <input id="number" type="number" class="validate" required max="60" min="1">
+                            <span class="helper-text" data-error="Número inválido" data-success="Número válido"></span>
+                        </div>
+                        <div class="col s3 l1">
+                            <a class="waves-effect waves-light btn green darken-3 hoverable" id="adicionar">
+                                <i class="material-icons">add</i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <div class="col s12 center-special">
+                    <h4>Lista dos números</h4>
+                    <table class="highlight centered">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Palpite</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
-                <div class="input-field col s3 l2">
-                    <label for="number">Número</label>
-                    <input id="number" type="text" class="validate">
+                <form class="col s12">
+                    <div class="row center">
+                        <div class="col s12">
+                            Quantos números deseja sortear ?
+                            <div class="input-field inline">
+                                <input id="qtde" type="number" class="validate" required min="0" max="0">
+                                <label for="qtde">Qtde</label>
+                                <span class="helper-text" data-error="Número inválido" data-success="Número válido"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col s12 center-special">
+                    <a href="#!" class="waves-effect waves-light btn green darken-3 hoverable modal-trigger"
+                        id="sortear">Sortear</a>
                 </div>
-                <div class="col s3 l1">
-                    <a class="waves-effect waves-light btn green darken-3 hoverable" id="adicionar">
-                        <i class="material-icons">add</i>
-                    </a>
-                </div>
-            </div>
-            <div class="col s12 center-special">
-                <h4>Lista dos números</h4>
-                <table class="highlight centered">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Palpite</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="col s12 center">
-                <div class="input-field inline">
-                    <input id="qtde" type="number" class="validate">
-                    <label for="qtde">Quantos números deseja sortear ?</label>
-                </div>
-            </div>
-            <div class="col s12 center-special">
-                <a class="waves-effect waves-light btn green darken-3 hoverable modal-trigger" id="sortear">Sortear</a>
             </div>
         </div>
     </div>
 
     <!-- Modal Editar Palpites -->
-    <div id="modalPalpites" class="modal">
+    <div id="modalEdit" class="modal">
         <div class="modal-content">
             <div class="row valign-wrapper">
                 <div class="input-field col s6">
-                    <input id="nameEdit" type="text" class="validate">
+                    <input id="nameEdit" type="text" class="validate" required pattern="[A-Za-zÀ-ú\s]+$" minlength="2" maxlength="30">
+                    <span class="helper-text" data-error="Nome inválido" data-success="Nome válido"></span>
                 </div>
                 <div class="input-field col s3">
-                    <input id="numberEdit" type="text" class="validate">
+                    <input id="numberEdit" type="number" class="validate" required max="60" min="1">
+                    <span class="helper-text" data-error="Número inválido" data-success="Número válido"></span>
                 </div>
             </div>
         </div>
@@ -86,4 +101,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./index.js"></script>
 </body>
+
 </html>
