@@ -47,14 +47,15 @@ function renderizarHtml() {
 function adicionarPalpite() {
     let nome = inputNome.value
     let palpite = inputNumero.value
-    if(nome > 0 || palpite > 0) {
+    if(inputNome.classList.contains('valid') && inputNumero.classList.contains('valid')) {
         listaPalpites.push({nome, palpite})
         inputNome.value = ''
         inputNumero.value = ''
+        inputNome.classList.remove('valid')
+        inputNumero.classList.remove('valid')
+        inputQtde.setAttribute('max', `${listaPalpites.length}`)
         renderizarHtml()
         saveToStorage()
-    } else {
-        alert('Favor inserir nome e número')
     }
 }
 
@@ -62,22 +63,24 @@ function editarPalpite(posicao) {
     inputNomeEdit.value = listaPalpites[posicao].nome
     inputNumeroEdit.value = listaPalpites[posicao].palpite
 
-    let instance = M.Modal.getInstance(document.querySelector('#modalPalpites'));
+    let instance = M.Modal.getInstance(document.querySelector('#modalEdit'));
     instance.open()
 
     let buttonEdit = document.querySelector('#buttonEditModal')
     buttonEdit.onclick = () => {
-        if(inputNomeEdit.value != listaPalpites[posicao].nome) {
-            listaPalpites[posicao].nome = inputNomeEdit.value
-            instance.close()
-            renderizarHtml()
-            saveToStorage()
-        }
-        if(inputNumeroEdit.value != listaPalpites[posicao].palpite) {
-            listaPalpites[posicao].palpite = inputNumeroEdit.value
-            instance.close()
-            renderizarHtml()
-            saveToStorage()
+        if(inputNomeEdit.classList.contains('valid') && inputNumeroEdit.classList.contains('valid')) {
+            if(inputNomeEdit.value != listaPalpites[posicao].nome) {
+                listaPalpites[posicao].nome = inputNomeEdit.value
+                instance.close()
+                renderizarHtml()
+                saveToStorage()
+            }
+            if(inputNumeroEdit.value != listaPalpites[posicao].palpite) {
+                listaPalpites[posicao].palpite = inputNumeroEdit.value
+                instance.close()
+                renderizarHtml()
+                saveToStorage()
+            }
         }
     }
 }
@@ -86,6 +89,7 @@ function deletarPalpite(posicao) {
     listaPalpites.splice(posicao, 1)
     renderizarHtml()
     saveToStorage()
+    inputQtde.setAttribute('max', `${listaPalpites.length}`)
 }
 
 function saveToStorage() {
@@ -114,29 +118,34 @@ function gerarListaAleatorios() {
 }
 
 function sortearNumeros() {
-    if(inputQtde.value > listaPalpites.length || inputQtde.value < 0) {
-        alert('Quantidade de números a sortear não permitidos')
-    } else if (inputQtde.value == 0) {
-        alert('Favor inserir quantos números deseja sortear')
-    } else {
+    if(inputQtde.classList.contains('valid')) {
         let numsGeradosAleatoriamente = gerarListaAleatorios()
         let listaSorteados = []
     
         numsGeradosAleatoriamente.map(numero => {
             listaSorteados.push(listaPalpites[numero].palpite)
         })
-
+    
         let instance = M.Modal.getInstance(document.querySelector('#modalResult'));
         instance.open()
     
-        document.querySelector('#result').innerHTML = listaSorteados.join(' ')
+        document.querySelector('#result').innerHTML = listaSorteados.sort((a, b) => {
+            return a - b
+        }).join(' ')
     }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     M.AutoInit()
     renderizarHtml()
+    inputQtde.setAttribute('max', `${listaPalpites.length}`)
     buttonAdicionar.onclick = adicionarPalpite
     buttonSortear.onclick = sortearNumeros
+
+    document.addEventListener('keypress', (e) => {
+        if(e.key == 'Enter') {
+            buttonAdicionar.click()
+        }
+    })
 });
 
