@@ -9,4 +9,4 @@ Por exemplo, para o caso em que se deseja realizar um jogo de 6 números ou mais
 - [Materialize](https://materializecss.com/about.html "Materialize")
 
 ## Pode ser visualizada no link abaixo :exclamation:
-- https://renatogual.github.io/palpites-megasena/
+- [Palpites Mega Sena](https://renatogual.github.io/palpites-megasena/)
