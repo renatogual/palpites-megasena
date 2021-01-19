@@ -1,7 +1,6 @@
 body {
-    background: url('./trevo.jpeg') center top fixed;
+    background-color: rgb(1, 95, 1);
 }
-
 .container {
     margin-top: 20px;
     margin-bottom: 20px;
