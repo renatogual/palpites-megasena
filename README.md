@@ -12,5 +12,5 @@ Foi desenvolvido inicialmente apenas um script para resolver uma situação que 
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code")
 - [Materialize](https://materializecss.com/about.html "Materialize")
 
-## Demonstração
+## Demonstração 🚀
 - [Acessar website](https://renatogual.github.io/palpites-megasena/)
