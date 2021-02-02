@@ -8,9 +8,9 @@ Por exemplo, para o caso em que se deseja realizar um jogo de 6 números ou mais
 
 Foi desenvolvido inicialmente apenas um script para resolver uma situação que presenciei na empresa onde trabalho, mas aproveitei a oportunidade e criei toda a interface gráfica na Web para que outras pessoas possam utilizar.
 
-## Ferramentas utilizadas :wrench: 
+## 🛠 Ferramentas utilizadas 
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code")
 - [Materialize](https://materializecss.com/about.html "Materialize")
 
-## Demonstração 🚀
+## 🚀 Demonstração
 - [Acessar website](https://renatogual.github.io/palpites-megasena/)
