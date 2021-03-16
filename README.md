@@ -1,3 +1,6 @@
+<h1 align="center"> 🚀 Demonstração </h1>
+<img src="./palpites-megasena.gif">
+
 ## 🔖&nbsp; Sobre
 
 Aplicação desenvolvida para resolver o problema de sortear números entre os indicados por várias pessoas em um bolão da Mega Sena.
@@ -10,5 +13,5 @@ Foi desenvolvido inicialmente apenas um script para resolver uma situação enco
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code")
 - [Materialize](https://materializecss.com/about.html "Materialize")
 
-## 🚀 Demonstração
-- [Acessar website](https://renatogual.github.io/palpites-megasena/)
+## Para acessar o site
+- [Palpites Megasena](https://renatogual.github.io/palpites-megasena/)
