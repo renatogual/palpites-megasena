@@ -14,4 +14,4 @@ Foi desenvolvido inicialmente apenas um script para resolver uma situação enco
 - [Materialize](https://materializecss.com/about.html "Materialize")
 
 ## Para acessar o site
-- [Palpites Megasena](https://renatogual.github.io/palpites-megasena/)
+- [Palpites Megasena](https://renatogual.github.io/palpites-megasena-js/)
